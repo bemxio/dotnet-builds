@@ -1,15 +1,15 @@
 on:
-  # schedule:
-  #  - cron:  '0 0 * * 0'
   workflow_dispatch:
-  repository_dispatch:
-    types: [webhook]
-  push:
-    paths-ignore:
-      - README.md
-      - dotnet-install.sh
-    branches:
-      - master
+# schedule:
+#    - cron:  '0 0 * * 0'
+# repository_dispatch:
+#   types: [webhook]
+# push:
+#   paths-ignore:
+#     - README.md
+#     - dotnet-install.sh
+#   branches:
+#     - master
 
 permissions:
   contents: write
@@ -47,11 +47,11 @@ jobs:
         run: |
           latestRev=""
           today=$(date --utc +%Y%m%d)
-          releaseUrl="${{ github.server_url }}/trungnt2910/dotnet-builds/releases/tag/net${{ matrix.dotnet_major_version }}-${{ matrix.dotnet_os }}-${{ matrix.dotnet_arch }}-$today."
+          releaseUrl="${{ github.server_url }}/${{ github.repository }}/releases/tag/net${{ matrix.dotnet_major_version }}-${{ matrix.dotnet_os }}-${{ matrix.dotnet_arch }}-$today."
           pageNum=1
           while [ -z "$latestRev" ];
           do
-              json=$(curl -s ${{ github.api_url }}/repos/trungnt2910/dotnet-builds/releases?page=$pageNum)
+              json=$(curl -s ${{ github.api_url }}/repos/${{ github.repository }}/releases?page=$pageNum)
               pageNum=$((pageNum + 1))
               if [ $(echo $json | jq length) -eq 0 ]; then
                   # This means that we've passed the end and reached an empty array
