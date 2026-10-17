@@ -2,7 +2,7 @@
 
 GITHUB_SERVER_URL="https://github.com"
 GITHUB_API_URL="https://api.github.com"
-GITHUB_REPOSITORY="trungnt2910/dotnet-builds"
+GITHUB_REPOSITORY="bemxio/dotnet-builds"
 
 for (( i=1; i<=$#; i++)); do
 case ${!i} in
