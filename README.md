@@ -28,7 +28,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/bemxio/dotnet-builds/ref
 echo 'export PATH="$PATH:$HOME/dotnet"' >> ~/config/settings/profile
 ```
 
-- Add a custom NuGet source containing essential Haiku-specific packages. `<your_github_token></your_github_token>` should be a [personal access token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry#authenticating-to-github-packages) with at least the `read:packages` permission:
+- Add a custom NuGet source containing essential Haiku-specific packages. `<your_github_token>` should be a [personal access token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry#authenticating-to-github-packages) with at least the `read:packages` permission:
 ```sh
 dotnet nuget add source --username <your_github_username> --password <your_github_token> --store-password-in-clear-text --name dotnet_haiku_nuget "https://nuget.pkg.github.com/bemxio/index.json"
 ```
